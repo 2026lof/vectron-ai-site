@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vectron.ai | AI Consulting & Products</title>
+  <style>
+    :root {
+      --primary: #111827;
+      --primary-dark: #020617;
+      --accent: #18d6c4;
+      --bg: #f6f9fc;
+      --text: #111827;
+      --muted: #64748b;
+      --card: #ffffff;
+      --border: #dbe4ee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -1px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      filter: drop-shadow(0 10px 18px rgba(24, 214, 196, 0.25));
+    }
+
+    .logo-word span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.18);
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--primary-dark);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 80px 24px 55px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #e6fffb;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 610px;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .trust {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 26px;
+      box-shadow: 0 30px 70px rgba(81, 54, 74, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: rgba(24, 214, 196, 0.16);
+      border-radius: 50%;
+      right: -90px;
+      top: -70px;
+    }
+
+    .dashboard {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+    }
+
+    .dash-row {
+      background: #fbfafb;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dash-row strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .dash-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #e6fffb;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 48px 24px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .app-category {
+      margin-bottom: 36px;
+    }
+
+    .app-category h3.category-title {
+      font-size: 25px;
+      letter-spacing: -0.8px;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-category h3.category-title span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #e6fffb;
+      font-size: 18px;
+    }
+
+    .app.compact {
+      min-height: 142px;
+      padding: 20px;
+    }
+
+    .app {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 170px;
+      transition: 0.2s ease;
+    }
+
+    .app:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(37, 34, 42, 0.08);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      background: #e6fffb;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .app h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .app p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 34px;
+    }
+
+    .panel h2 {
+      font-size: 34px;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .checklist {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 36px;
+      padding: 54px 28px;
+      margin-bottom: 56px;
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 0 auto 26px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 18px;
+    }
+
+    .cta .btn {
+      background: white;
+      color: var(--primary);
+      box-shadow: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .apps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .apps {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 14px 18px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#" aria-label="Vectron.ai home">
+        <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="Vectron.ai logo">
+          <defs>
+            <linearGradient id="vectronGradient" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#18d6c4"/>
+              <stop offset="1" stop-color="#5b7cfa"/>
+            </linearGradient>
+          </defs>
+          <rect x="6" y="6" width="52" height="52" rx="16" fill="#111827"/>
+          <path d="M17 19 L30 47 L35 47 L48 19 H41 L32.5 38.5 L24 19 Z" fill="url(#vectronGradient)"/>
+          <circle cx="48" cy="17" r="4" fill="#18d6c4"/>
+          <circle cx="16" cy="47" r="3" fill="#5b7cfa"/>
+          <path d="M47 17 C42 20 39 24 36 31" stroke="#18d6c4" stroke-width="2" fill="none" opacity=".85"/>
+        </svg>
+        <div class="logo-word">Vectron<span>.ai</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="#apps">Solutions</a>
+        <a href="#why">Why Vectron</a>
+        <a href="#demo">Contact</a>
+      </div>
+      <a class="btn" href="#demo">Start AI Audit</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">⚡ AI consulting + product studio</div>
+        <h1>Build smarter operations with practical AI.</h1>
+        <p>Vectron.ai helps businesses connect data, automate workflows, launch AI-powered products, and turn scattered operations into intelligent systems.</p>
+        <div class="actions">
+          <a class="btn" href="#demo">Book a Strategy Call</a>
+          <a class="btn secondary" href="#apps">Explore Solutions</a>
+        </div>
+        <div class="trust">
+          <span>✓ AI agents & automations</span>
+          <span>✓ Data-connected workflows</span>
+          <span>✓ Consulting + product delivery</span>
+        </div>
+      </div>
+
+      <div class="product-card" aria-label="AI operating system dashboard preview">
+        <div class="dashboard">
+          <div class="dash-row">
+            <div><strong>AI Lead Engine</strong><span>Capture, qualify, and route opportunities</span></div>
+            <div class="pill">Live</div>
+          </div>
+          <div class="dash-row">
+            <div><strong>Workflow Automation</strong><span>Automate repetitive business processes</span></div>
+            <div class="pill">Synced</div>
+          </div>
+          <div class="dash-row">
+            <div><strong>Data Intelligence</strong><span>Dashboards, insights, and decision support</span></div>
+            <div class="pill">Ready</div>
+          </div>
+          <div class="dash-row">
+            <div><strong>AI Products</strong><span>Custom tools, portals, and copilots</span></div>
+            <div class="pill">Unified</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apps">
+      <div class="section-title">
+        <h2>AI-ready business apps across your whole company.</h2>
+        <p>Vectron.ai can help you plan, integrate, automate, and enhance the full Odoo-style business app stack with AI agents, dashboards, and connected workflows.</p>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>🌐</span>Website</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">🖥️</div><h3>Website</h3><p>AI-assisted pages, forms, chat, content updates, and lead capture workflows.</p></article>
+          <article class="app compact"><div class="icon">🛒</div><h3>eCommerce</h3><p>Online store automation, product content, order intelligence, and customer follow-up.</p></article>
+          <article class="app compact"><div class="icon">✍️</div><h3>Blog</h3><p>AI-supported content planning, publishing calendars, and SEO-friendly article drafts.</p></article>
+          <article class="app compact"><div class="icon">💬</div><h3>Forum</h3><p>Community Q&amp;A, searchable support knowledge, and AI-powered response suggestions.</p></article>
+          <article class="app compact"><div class="icon">🎓</div><h3>eLearning</h3><p>Course portals, training content, learner tracking, and AI study/support assistants.</p></article>
+          <article class="app compact"><div class="icon">🗨️</div><h3>Live Chat</h3><p>Website chat, lead routing, support triage, and AI-assisted conversation summaries.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>📈</span>Sales</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">🎯</div><h3>CRM</h3><p>Lead scoring, pipeline automation, follow-up reminders, and sales intelligence.</p></article>
+          <article class="app compact"><div class="icon">🧾</div><h3>Sales</h3><p>Quotes, orders, proposals, contract workflows, and AI-assisted sales documentation.</p></article>
+          <article class="app compact"><div class="icon">🏪</div><h3>Point of Sale</h3><p>Retail and restaurant POS workflows connected with reporting and inventory insights.</p></article>
+          <article class="app compact"><div class="icon">🔁</div><h3>Subscriptions</h3><p>Recurring billing, renewals, customer lifecycle tracking, and retention automation.</p></article>
+          <article class="app compact"><div class="icon">📦</div><h3>Rental</h3><p>Rental contracts, availability, delivery/return workflows, and automated reminders.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>💵</span>Finance</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">📊</div><h3>Accounting</h3><p>Financial workflows, reporting dashboards, reconciliation support, and alerts.</p></article>
+          <article class="app compact"><div class="icon">🧾</div><h3>Invoicing</h3><p>Invoice generation, payment tracking, collections reminders, and customer summaries.</p></article>
+          <article class="app compact"><div class="icon">💳</div><h3>Expenses</h3><p>Expense intake, approvals, receipt handling, policy checks, and reimbursement tracking.</p></article>
+          <article class="app compact"><div class="icon">📁</div><h3>Documents</h3><p>Document storage, extraction, classification, search, and AI knowledge retrieval.</p></article>
+          <article class="app compact"><div class="icon">📑</div><h3>Spreadsheets</h3><p>BI-style spreadsheets, connected reports, live metrics, and automated summaries.</p></article>
+          <article class="app compact"><div class="icon">✒️</div><h3>Sign</h3><p>Digital signature workflows, contract routing, status tracking, and reminders.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>🏭</span>Inventory &amp; Manufacturing</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">📦</div><h3>Inventory</h3><p>Stock visibility, reorder alerts, warehouse workflows, and logistics intelligence.</p></article>
+          <article class="app compact"><div class="icon">⚙️</div><h3>Manufacturing</h3><p>Production workflows, BOM support, work orders, and operational reporting.</p></article>
+          <article class="app compact"><div class="icon">🧬</div><h3>PLM</h3><p>Product lifecycle tracking, engineering changes, approvals, and documentation control.</p></article>
+          <article class="app compact"><div class="icon">🛍️</div><h3>Purchase</h3><p>Purchase orders, vendor workflows, approvals, price tracking, and procurement insights.</p></article>
+          <article class="app compact"><div class="icon">🛠️</div><h3>Maintenance</h3><p>Equipment requests, preventive maintenance, technician scheduling, and service logs.</p></article>
+          <article class="app compact"><div class="icon">✅</div><h3>Quality</h3><p>Quality checks, issue tracking, compliance records, and corrective action workflows.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>👥</span>Human Resources</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">👤</div><h3>Employees</h3><p>Employee records, HR workflows, onboarding, and internal support automation.</p></article>
+          <article class="app compact"><div class="icon">🔎</div><h3>Recruitment</h3><p>Candidate pipelines, screening assistance, interview scheduling, and hiring dashboards.</p></article>
+          <article class="app compact"><div class="icon">🌴</div><h3>Time Off</h3><p>PTO requests, approvals, balances, calendars, and policy-aware notifications.</p></article>
+          <article class="app compact"><div class="icon">⭐</div><h3>Appraisals</h3><p>Performance reviews, feedback cycles, goals, and AI-assisted review summaries.</p></article>
+          <article class="app compact"><div class="icon">🤝</div><h3>Referral</h3><p>Employee referrals, job sharing, candidate tracking, and reward workflows.</p></article>
+          <article class="app compact"><div class="icon">🚗</div><h3>Fleet</h3><p>Vehicle records, cost tracking, assignments, service reminders, and fleet reports.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>📣</span>Marketing</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">🤖</div><h3>Marketing Automation</h3><p>Campaign journeys, segmentation, lead nurturing, and automated follow-up flows.</p></article>
+          <article class="app compact"><div class="icon">📧</div><h3>Email Marketing</h3><p>Email campaigns, AI-assisted copy, list targeting, and performance reporting.</p></article>
+          <article class="app compact"><div class="icon">📱</div><h3>SMS Marketing</h3><p>Text campaigns, reminders, promotions, and customer communication automation.</p></article>
+          <article class="app compact"><div class="icon">🌍</div><h3>Social Marketing</h3><p>Social content workflows, campaign calendars, monitoring, and engagement insights.</p></article>
+          <article class="app compact"><div class="icon">🎟️</div><h3>Events</h3><p>Event pages, registrations, ticketing, reminders, and attendee follow-up.</p></article>
+          <article class="app compact"><div class="icon">📋</div><h3>Survey</h3><p>Customer surveys, feedback forms, analysis, and AI-generated insight summaries.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>🧰</span>Services</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">📌</div><h3>Project</h3><p>Project plans, task workflows, deadlines, collaboration, and delivery dashboards.</p></article>
+          <article class="app compact"><div class="icon">⏱️</div><h3>Timesheet</h3><p>Time tracking, approvals, utilization reporting, and billing-ready summaries.</p></article>
+          <article class="app compact"><div class="icon">🚚</div><h3>Field Service</h3><p>Onsite scheduling, technician workflows, service notes, and job completion reports.</p></article>
+          <article class="app compact"><div class="icon">🎧</div><h3>Helpdesk</h3><p>Ticket intake, prioritization, AI suggestions, SLA tracking, and support analytics.</p></article>
+          <article class="app compact"><div class="icon">🗓️</div><h3>Planning</h3><p>Staff scheduling, capacity planning, shift management, and workload visibility.</p></article>
+          <article class="app compact"><div class="icon">📅</div><h3>Appointments</h3><p>Online booking, calendar sync, intake forms, reminders, and no-show reduction.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>⚡</span>Productivity</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">💬</div><h3>Discuss</h3><p>Team messaging, internal collaboration, notifications, and conversation summaries.</p></article>
+          <article class="app compact"><div class="icon">✅</div><h3>Approvals</h3><p>Approval routing, policy checks, status visibility, and automated decision workflows.</p></article>
+          <article class="app compact"><div class="icon">📡</div><h3>Internet of Things</h3><p>Connected devices, operational signals, alerts, and workflow triggers.</p></article>
+          <article class="app compact"><div class="icon">☎️</div><h3>VOIP</h3><p>Call workflows, contact records, call notes, and AI-generated summaries.</p></article>
+          <article class="app compact"><div class="icon">🧠</div><h3>Knowledge</h3><p>Internal knowledge bases, searchable documentation, and AI answer assistants.</p></article>
+        </div>
+      </div>
+
+      <div class="app-category">
+        <h3 class="category-title"><span>🧩</span>Customization</h3>
+        <div class="apps">
+          <article class="app compact"><div class="icon">🛠️</div><h3>Studio</h3><p>Custom app configuration, fields, workflows, reports, and AI-enabled extensions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="split">
+      <div class="panel">
+        <h2>Consulting that turns AI into usable systems.</h2>
+        <p>Vectron.ai focuses on practical implementation: connect your existing tools, automate high-value workflows, and create AI products your team can actually use.</p>
+        <ul class="checklist">
+          <li>Map high-impact AI opportunities</li>
+          <li>Automate repetitive operational tasks</li>
+          <li>Build custom AI tools around your process</li>
+          <li>Deliver dashboards and reporting systems</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Built for service businesses, healthcare, restaurants, and SMBs.</h2>
+        <p>Whether you run a medical office, RCM operation, restaurant, retail business, or consulting firm, Vectron.ai can design AI systems around your workflows.</p>
+        <ul class="checklist">
+          <li>Restaurants, retail, and franchises</li>
+          <li>Healthcare and RCM operations</li>
+          <li>Professional services and consulting</li>
+          <li>Product Launch and field operations</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="cta">
+        <h2>Ready to launch your AI advantage?</h2>
+        <p>Start with a strategy call and identify the fastest AI wins for your consulting, operations, or product roadmap.</p>
+        <a class="btn" href="mailto:hello@vectron.ai">Contact Vectron.ai</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Vectron.ai. AI consulting, automation, and product development for growing businesses.
+  </footer>
+</body>
+</html>
