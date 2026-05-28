@@ -418,7 +418,70 @@
         padding-top: 55px;
       }
     }
+
+    html { scroll-behavior: smooth; }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 12% 18%, rgba(24,214,196,.16), transparent 28%), radial-gradient(circle at 88% 8%, rgba(91,124,250,.13), transparent 28%), radial-gradient(circle at 50% 90%, rgba(17,24,39,.08), transparent 35%);
+      z-index: -1;
+    }
+    .hero h1 { background: linear-gradient(135deg,#111827 20%,#334155 55%,#18d6c4 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .premium-strip { max-width:1180px; margin:0 auto; padding:12px 24px 0; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .metric { background:rgba(255,255,255,.78); border:1px solid var(--border); border-radius:24px; padding:22px; backdrop-filter:blur(14px); box-shadow:0 20px 45px rgba(15,23,42,.06); }
+    .metric strong { display:block; font-size:30px; letter-spacing:-1px; margin-bottom:4px; }
+    .metric span { color:var(--muted); font-weight:700; font-size:14px; }
+    .contact-wrap { display:grid; grid-template-columns:.9fr 1.1fr; gap:24px; align-items:stretch; }
+    .contact-card,.contact-form { background:rgba(255,255,255,.86); border:1px solid var(--border); border-radius:30px; padding:34px; box-shadow:0 24px 60px rgba(15,23,42,.07); backdrop-filter:blur(14px); }
+    .contact-card h2,.contact-form h2 { font-size:34px; letter-spacing:-1px; margin-bottom:14px; }
+    .contact-card p { color:var(--muted); margin-bottom:18px; }
+    .contact-detail { display:grid; gap:10px; color:var(--muted); font-weight:700; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .field { display:grid; gap:7px; margin-bottom:14px; }
+    .field.full { grid-column:1 / -1; }
+    label { font-size:14px; font-weight:800; color:var(--text); }
+    input,textarea,select { width:100%; border:1px solid var(--border); border-radius:16px; padding:14px 15px; font:inherit; color:var(--text); background:#fff; outline:none; }
+    input:focus,textarea:focus,select:focus { border-color:var(--accent); box-shadow:0 0 0 4px rgba(24,214,196,.14); }
+    textarea { min-height:130px; resize:vertical; }
+    .site-footer { background:#080d18; color:white; border-top:0; padding:56px 24px 28px; text-align:left; }
+    .footer-inner { max-width:1180px; margin:auto; display:grid; grid-template-columns:1.2fr repeat(3,1fr); gap:32px; }
+    .footer-brand { font-size:28px; font-weight:900; letter-spacing:-1px; margin-bottom:12px; }
+    .footer-brand span { color:var(--accent); }
+    .site-footer p,.site-footer a { color:rgba(255,255,255,.68); text-decoration:none; font-size:14px; }
+    .site-footer h4 { margin-bottom:12px; font-size:15px; }
+    .footer-links { display:grid; gap:9px; }
+    .footer-bottom { max-width:1180px; margin:34px auto 0; padding-top:22px; border-top:1px solid rgba(255,255,255,.12); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .chatbot { position:fixed; right:22px; bottom:22px; width:340px; max-width:calc(100vw - 44px); background:white; border:1px solid var(--border); border-radius:24px; overflow:hidden; box-shadow:0 26px 70px rgba(15,23,42,.22); z-index:30; display:none; }
+    .chatbot.open { display:block; }
+    .chat-head { background:linear-gradient(135deg,var(--primary),#1e293b); color:white; padding:16px; display:flex; justify-content:space-between; gap:12px; align-items:center; font-weight:900; }
+    .chat-body { padding:16px; display:grid; gap:12px; }
+    .chat-message { background:#f1f5f9; border-radius:16px; padding:12px; color:var(--text); font-size:14px; }
+    .chat-actions { display:grid; gap:8px; }
+    .chat-actions a { border:1px solid var(--border); border-radius:14px; padding:11px 12px; text-decoration:none; color:var(--text); font-weight:800; font-size:14px; }
+    .chat-toggle { position:fixed; right:22px; bottom:22px; z-index:31; border:0; border-radius:999px; background:var(--primary); color:white; padding:15px 18px; font-weight:900; box-shadow:0 18px 45px rgba(15,23,42,.25); cursor:pointer; }
+    .chatbot.open + .chat-toggle { display:none; }
+    .close-chat { border:0; background:transparent; color:white; font-size:22px; cursor:pointer; }
+    @media (max-width:900px) { .premium-strip,.contact-wrap,.footer-inner { grid-template-columns:1fr; } .form-grid { grid-template-columns:1fr; } }
+
   </style>
+  <meta name="description" content="Vectrons.ai builds AI consulting solutions, automation systems, business dashboards, and custom AI products for growing companies." />
+  <meta name="keywords" content="AI consulting, AI automation, AI agents, business intelligence, workflow automation, custom AI products, Vectrons.ai" />
+  <meta name="author" content="Vectrons.ai" />
+  <meta property="og:title" content="Vectrons.ai | AI Consulting & Products" />
+  <meta property="og:description" content="AI consulting, workflow automation, dashboards, and custom AI products for growing businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vectrons.ai" />
+  <meta property="og:image" content="https://vectrons.ai/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://vectrons.ai" />
+
+  <!-- Google Analytics: replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+  </script>
 </head>
 <body>
   <header>
@@ -442,7 +505,7 @@
       <div class="nav-links">
         <a href="#apps">Solutions</a>
         <a href="#why">Why Vectrons</a>
-        <a href="#demo">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
       <a class="btn" href="#demo">Start AI Audit</a>
     </nav>
@@ -485,6 +548,12 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="premium-strip" aria-label="Vectrons.ai delivery highlights">
+      <div class="metric"><strong>3-Day</strong><span>AI opportunity audit</span></div>
+      <div class="metric"><strong>AI Agents</strong><span>For intake, reporting, support, and follow-up</span></div>
+      <div class="metric"><strong>Data-First</strong><span>Dashboards, automation, and measurable ROI</span></div>
     </section>
 
     <section id="apps">
@@ -618,17 +687,60 @@
       </div>
     </section>
 
+    <section id="contact">
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <h2>Let’s design your AI operating layer.</h2>
+          <p>Tell us what you want to improve: lead capture, operations, reporting, customer communication, documentation, or product development.</p>
+          <div class="contact-detail">
+            <div>✉️ hello@vectrons.ai</div>
+            <div>⚡ AI audit, automation, dashboards, and product builds</div>
+            <div>🔒 Designed for practical business workflows</div>
+          </div>
+        </div>
+        <form class="contact-form" name="vectrons-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="vectrons-contact" />
+          <p style="display:none;"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+          <h2>Request a strategy call</h2>
+          <div class="form-grid">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
+            <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" /></div>
+            <div class="field"><label for="interest">Main Interest</label><select id="interest" name="interest"><option>AI Automation</option><option>AI Agents</option><option>Dashboards & Reporting</option><option>Custom AI Product</option><option>AI Strategy Audit</option></select></div>
+            <div class="field full"><label for="message">What would you like to improve?</label><textarea id="message" name="message" placeholder="Example: automate intake forms, summarize reports, build a customer support assistant, connect CRM and dashboards..."></textarea></div>
+          </div>
+          <button class="btn" type="submit">Submit Request</button>
+        </form>
+      </div>
+    </section>
+
     <section id="demo">
       <div class="cta">
         <h2>Ready to launch your AI advantage?</h2>
         <p>Start with a strategy call and identify the fastest AI wins for your consulting, operations, or product roadmap.</p>
-        <a class="btn" href="mailto:hello@vectrons.ai">Contact Vectrons.ai</a>
+        <a class="btn" href="#contact">Contact Vectrons.ai</a>
       </div>
     </section>
   </main>
-
-  <footer>
-    © 2026 Vectrons.ai. AI consulting, automation, and product development for growing businesses.
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><div class="footer-brand">Vectrons<span>.ai</span></div><p>AI consulting, automation, dashboards, and custom product development for businesses that want practical AI outcomes.</p></div>
+      <div><h4>Solutions</h4><div class="footer-links"><a href="#apps">AI Strategy</a><a href="#apps">Workflow Automation</a><a href="#apps">AI Agents</a><a href="#apps">Data Dashboards</a></div></div>
+      <div><h4>Company</h4><div class="footer-links"><a href="#why">Why Vectrons</a><a href="#contact">Contact</a><a href="#demo">Strategy Call</a></div></div>
+      <div><h4>Contact</h4><div class="footer-links"><a href="mailto:hello@vectrons.ai">hello@vectrons.ai</a><a href="https://vectrons.ai">vectrons.ai</a></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Vectrons.ai. All rights reserved.</p><p>Built for AI-enabled operations and product innovation.</p></div>
   </footer>
+
+  <div class="chatbot" id="chatbot">
+    <div class="chat-head"><span>Vectrons.ai Assistant</span><button class="close-chat" onclick="toggleChat()" aria-label="Close chat">×</button></div>
+    <div class="chat-body">
+      <div class="chat-message">Hi — I can help you identify AI opportunities, automation ideas, dashboards, or custom AI product concepts.</div>
+      <div class="chat-actions"><a href="#contact" onclick="toggleChat()">Book an AI strategy call</a><a href="mailto:hello@vectrons.ai?subject=AI%20Strategy%20Call">Email Vectrons.ai</a><a href="#apps" onclick="toggleChat()">Explore AI solutions</a></div>
+      <div class="chat-message">To connect a live AI chatbot later, replace this widget with Intercom, Crisp, Tidio, Voiceflow, Botpress, or a custom OpenAI-powered assistant.</div>
+    </div>
+  </div>
+  <button class="chat-toggle" onclick="toggleChat()">💬 AI Assistant</button>
+  <script>function toggleChat(){document.getElementById("chatbot").classList.toggle("open");}</script>
 </body>
 </html>
