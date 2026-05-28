@@ -61,10 +61,10 @@
     }
 
     .logo-mark {
-      width: 46px;
-      height: 46px;
-      flex: 0 0 46px;
-      filter: drop-shadow(0 10px 18px rgba(24, 214, 196, 0.25));
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 14px;
     }
 
     .logo-word span {
@@ -487,19 +487,11 @@
   <header>
     <nav class="nav">
       <a class="logo" href="#" aria-label="Vectrons.ai home">
-        <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="Vectrons.ai logo">
-          <defs>
-            <linearGradient id="vectronGradient" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#18d6c4"/>
-              <stop offset="1" stop-color="#5b7cfa"/>
-            </linearGradient>
-          </defs>
-          <rect x="6" y="6" width="52" height="52" rx="16" fill="#111827"/>
-          <path d="M17 19 L30 47 L35 47 L48 19 H41 L32.5 38.5 L24 19 Z" fill="url(#vectronGradient)"/>
-          <circle cx="48" cy="17" r="4" fill="#18d6c4"/>
-          <circle cx="16" cy="47" r="3" fill="#5b7cfa"/>
-          <path d="M47 17 C42 20 39 24 36 31" stroke="#18d6c4" stroke-width="2" fill="none" opacity=".85"/>
-        </svg>
+        <img 
+          src="vectrons_ai_logo.png"
+          alt="Vectrons.ai Logo"
+          class="logo-mark"
+        />
         <div class="logo-word">Vectrons<span>.ai</span></div>
       </a>
       <div class="nav-links">
